@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 10:05 +08:00
+更新时间：2026-05-04 10:10 +08:00
 
 ## 当前基线
 
@@ -32,15 +32,21 @@
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| 客户端性能优化阶段 1-3 | Codex | 已完成首轮，真机已验证 | 详见 `handoffs/2026-05-04-client-performance-stage123-codex-complete.md` |
-| Handshake key 轮换 Phase 2 | Codex | 客户端已完成，真机已验证，待后端日志复核 | 详见 `handoffs/2026-05-04-handshake-key-rotation-codex-complete.md` |
-| 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | 详见 `docs/performance-audit.md` |
+| 客户端性能优化阶段 1-3 | Codex | 已完成首轮，真机已验证 | `handoffs/2026-05-04-client-performance-stage123-codex-complete.md` |
+| Handshake key 轮换 Phase 1 | 后端 AI | ✅ 完成(2026-05-04 01:05 UTC) | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
+| Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ 真机验证闭环(09:30:44 之后 0 次 OLD-KEY) | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
+| Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
+| **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
+| 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
 | 服务器敏感信息 | 后端 AI/用户 | 不入库 | 只保存在本地安全位置，不提交 GitHub |
 
 ## 待确认
 
-- 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手，且不产生 `HANDSHAKE-OLD-KEY` 记录。
-- 后端 AI 复核运行配置和后端源码模板中旧 handshake key 是否已全部处理。
-- 如果后端后续调整消息同步 payload、历史消息分页、资源缩略图策略，需要继续通过本仓库对齐。
-- Phase 3 前确认旧 key 握手量已降到目标阈值，再关闭兼容。
+- ✅ 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手,**已确认 2026-05-04 01:45 UTC** 0 次 HANDSHAKE-OLD-KEY 在 09:30:44 后
+- ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key,**已处理 2026-05-04**(模板加占位符 `_PLACEHOLDER_REPLACE_BEFORE_DEPLOY` 防回退)
+- ✅ Phase 3 已立即执行(2026-05-04 01:50 UTC),旧 key 完全失效
+- ⚠️ Codex 注意:Web tioim / tioim-small / mg-page / iOS 若仍用旧 `p2xgse` 会立即握手失败,请同步检查
+- ⚠️ Codex 注意:浏览器 devtools 看 Web tioim 的 sessionId cookie 是否含 `HttpOnly; Secure; SameSite=Lax`(P0-10 nginx 已加)
+- ⚠️ Codex 注意:客户端 UI 处理新 4 种 UPLOAD-DENY 错误码(P0-06)
+- ⏳ 如果后端后续调整消息同步 payload、历史消息分页、资源缩略图策略,需要继续通过本仓库对齐
