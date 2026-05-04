@@ -40,7 +40,7 @@
 | Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
 | **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
 | **access-url-role 全 endpoint 对账** | 后端 AI | ✅ 73 条规则部署(2026-05-04 02:42 UTC),default 仍 allow,等监控 24h 切 deny | `handoffs/2026-05-04-access-url-role-full-audit-completed.md` |
-| **NdApi sessionid 越权(P0-15)** | 后端 AI | ✅ **临时缓解已上线**(2026-05-04 04:29 UTC,审计日志+Referer 白名单)+ 完整 SSO ticket 方案设计就绪,排下批次实施 | `handoffs/2026-05-04-p0-15-mitigation-deployed-and-plan.md` |
+| **NdApi sessionid 越权(P0-15)** | 后端 AI ✅ + Codex ⏳ | ✅ **服务端 SSO ticket 已上线**(2026-05-04 04:55 UTC,2 接口可调,基本测试通过)等 Codex 改前端 5 文件 + 联调下线旧接口 | `handoffs/2026-05-04-p0-15-sso-ticket-backend-deployed.md` |
 | **IM 真 bug 第二批 IM-02/15/17** | 后端 AI | ✅ 完成 + 部署(2026-05-04 03:55 UTC,IM-08 校正非 bug,IM-18 Stage 0 不做) | `handoffs/2026-05-04-im-batch-fixes-and-codex-ack.md` §2 |
 | 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
