@@ -1,6 +1,6 @@
 # 上传拒绝提示处理 - Codex 完成记录
 
-更新时间：2026-05-04 10:34 +08:00
+更新时间：2026-05-04 10:39 +08:00
 
 ## 结论
 
@@ -41,12 +41,27 @@ Codex 已按知识库和上传链路复核后完成客户端处理。后端 P0-0
 
 覆盖入口：聊天图片/视频/语音/文件、用户头像、朋友圈发布、朋友圈封面、OA/通用上传。
 
+## APK
+
+- APK：`D:\tantan\交付\谭聊-android-release-20260504-upload-deny-ui.apk`
+- 大小：`97464943` 字节
+- SHA256：`AA9408E45A582C0164FACE01902C762F835E7258DD9BE2F29DF573AA21F197F6`
+
 ## 验证
 
 - 已格式化 3 个改动 Dart 文件。
 - 定向命令：`flutter analyze --no-pub upload_error_utils.dart upload_utils.dart oa_upload_utils.dart`
 - 结果：无新增类型错误。
 - 剩余提示：`upload_utils.dart` 中既有 `showLoadingDialog` deprecated info，非本次新增问题。
+- `flutter build apk --release --no-pub`：通过。
+- ADB 安装：`Success`。
+- 真机：`FIN-AL60a`，序列号 `3YH9K24B29002144`。
+- 包名：`site.anjuke.tanchat`。
+- versionName：`10.0.0`。
+- versionCode：`241101012`。
+- lastUpdateTime：`2026-05-04 10:39:11`。
+- 启动后进程：`3791`，前台 Activity：`site.anjuke.tanchat/com.tiocloud.fchat.MainActivity`。
+- logcat：无 `FATAL EXCEPTION`，无 `E/AndroidRuntime`，无应用 ANR。
 
 ## 后端待对齐
 
