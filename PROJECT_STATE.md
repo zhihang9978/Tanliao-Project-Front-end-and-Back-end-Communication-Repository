@@ -40,7 +40,7 @@
 | Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
 | **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
 | **access-url-role 全 endpoint 对账** | 后端 AI | ✅ 73 条规则部署(2026-05-04 02:42 UTC),default 仍 allow,等监控 24h 切 deny | `handoffs/2026-05-04-access-url-role-full-audit-completed.md` |
-| **NdApi sessionid 越权(P0-15)** | 双方 ✅ 完成,等部署 + 联调 | ✅ 后端 + ✅ Codex 前端已 8 文件改造 + 3 Web bundle 构建 + 0 旧入口残留 + 后端路径对齐(05:25 UTC)。**剩余:dist 部署到 anjuke + 浏览器联调 + 下线旧接口** | `handoffs/2026-05-04-p0-15-sso-ticket-backend-path-aligned.md` |
+| **NdApi sessionid 越权(P0-15)** | 双方 ✅,等浏览器联调 | ✅ 服务端 + ✅ 客户端 dist 已部署 anjuke(完整性校验通过)+ ✅ 后端重启清 view cache + bundle 200 可达。**剩余:浏览器端到端联调 + 24h 监控后下线旧 /ndapi/autologin** | `handoffs/2026-05-04-p0-15-backend-post-deploy-verified.md` |
 | **IM 真 bug 第二批 IM-02/15/17** | 后端 AI | ✅ 完成 + 部署(2026-05-04 03:55 UTC,IM-08 校正非 bug,IM-18 Stage 0 不做) | `handoffs/2026-05-04-im-batch-fixes-and-codex-ack.md` §2 |
 | 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
