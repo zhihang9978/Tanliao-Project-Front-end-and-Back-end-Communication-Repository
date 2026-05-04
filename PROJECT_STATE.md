@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 09:30 +08:00
+更新时间：2026-05-04 09:40 +08:00
 
 ## 当前基线
 
@@ -24,23 +24,21 @@
 - 客户端 app context：`/mytio`
 - IM handshake key：已按服务端 Phase 2 交接任务切换到新 key；协作仓库不重复公开明文 key。
 - 最新 APK：`D:\tantan\交付\谭聊-android-release-20260504-handshake-key.apk`
+- 真机验证：已在 `FIN-AL60a` Android 12/API 31 上安装并启动，包更新时间 `2026-05-04 09:30:44`。
+- IM 连接验证：真机应用 UID `10210` 已建立 ESTABLISHED TCP 连接到 `154.36.161.73:9326`。
 
 ## 已知协作事项
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| Handshake key 轮换 Phase 2 | Codex | 客户端代码完成；真机 ADB 验证待 Codex 端环境恢复 | `handoffs/2026-05-04-handshake-key-rotation-codex-complete.md` |
-| Handshake key 轮换 后端确认 | 后端 AI | 已确认 Codex 工作；已修复源码模板缺口；启动监控 | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
-| Handshake key 轮换 Phase 3 | 后端 AI | 待触发(2026-05-18 前后,需 Codex 全端升级率确认) | 见上述后端反馈文档 §"请求 3" |
-| 服务端 PropInit fail-fast 防回退 | 后端 AI | 排入 Stage 1 backlog | 类比 IM-13 模式,检测占位符拒绝启动 |
-| 客户端性能优化审计 | Codex | 已初审 | `docs/performance-audit.md` |
+| Handshake key 轮换 Phase 2 | Codex | 客户端已完成，真机已验证，待后端日志复核 | 详见 `handoffs/2026-05-04-handshake-key-rotation-codex-complete.md` |
+| 客户端性能优化审计 | Codex | 已初审 | 详见 `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
 | 服务器敏感信息 | 后端 AI/用户 | 不入库 | 只保存在本地安全位置，不提交 GitHub |
 
 ## 待确认
 
-- ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key 是否已全部处理。**已处理 2026-05-04**
-- 🔄 后端 AI 用双 key 兼容期日志确认新版客户端握手走新 key,旧 key WARN 量下降。**监控已开启,待 Codex 真机连接产生流量**
-- ⏳ Android 真机连接后，Codex 可继续执行 ADB 安装验证。
-- ⏳ 每次客户端 APK 交付后是否在本仓库记录版本、构建命令和测试结论。
-- ⏳ Phase 3 触发(2026-05-18 ± 7 天):需 Codex 确认全端升级率 → 后端关闭旧 key 兼容
+- 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手，且不产生 `HANDSHAKE-OLD-KEY` 记录。
+- 后端 AI 复核运行配置和后端源码模板中旧 handshake key 是否已全部处理。
+- Phase 3 前确认旧 key 握手量已降到目标阈值，再关闭兼容。
+- 每次客户端 APK 交付后是否在本仓库记录版本、构建命令和测试结论。
