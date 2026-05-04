@@ -31,7 +31,9 @@
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ **已闭环**:Codex 真机已验证 + 后端日志确认 09:30:44 之后 0 次 HANDSHAKE-OLD-KEY | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
+| Handshake key 轮换 Phase 1 | 后端 AI | ✅ 完成 | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
+| Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ 真机验证闭环 | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
+| Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(应用户要求,跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
 | 客户端性能优化审计 | Codex | 已初审 | 详见 `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
 | 服务器敏感信息 | 后端 AI/用户 | 不入库 | 只保存在本地安全位置，不提交 GitHub |
