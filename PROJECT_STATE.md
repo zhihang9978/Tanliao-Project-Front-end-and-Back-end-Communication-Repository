@@ -39,6 +39,8 @@
 | Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ 真机验证闭环(09:30:44 之后 0 次 OLD-KEY) | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
 | Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
 | **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
+| **access-url-role 全 endpoint 对账** | 后端 AI | ✅ 73 条规则部署(2026-05-04 02:42 UTC),default 仍 allow,等监控 24h 切 deny | `handoffs/2026-05-04-access-url-role-full-audit-completed.md` |
+| **NdApi sessionid 越权(P0-15)** | 后端 AI | 🔴 新发现高危,待 Codex 确认能否下线 `/ndapi/autologin` | 同上 §5 |
 | 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
 | 服务器敏感信息 | 后端 AI/用户 | 不入库 | 只保存在本地安全位置，不提交 GitHub |
