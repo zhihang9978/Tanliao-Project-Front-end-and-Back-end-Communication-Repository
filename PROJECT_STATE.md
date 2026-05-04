@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 10:34 +08:00
+更新时间：2026-05-04 10:39 +08:00
 
 ## 当前基线
 
@@ -23,17 +23,17 @@
 - 客户端 API 基础地址：`https://api.anjuke.site`
 - 客户端 app context：`/mytio`
 - IM handshake key：已按服务端 Phase 2 交接任务切换到新 key；协作仓库不重复公开明文 key。
-- 最新 APK：`D:\tantan\交付\谭聊-android-release-20260504-performance-stage123.apk`
-- 最新 APK SHA256：`E8F242B412411350EB62DEAEE49C4A5F16D564D3528FF813783AA8079CDB0B8A`
-- 真机验证：已在 `FIN-AL60a` Android 12/API 31 上安装并启动，包更新时间 `2026-05-04 10:00:30`。
-- IM 连接验证：真机应用 UID `10210` 已建立 ESTABLISHED TCP 连接到 `154.36.161.73:9326`。
+- 最新 APK：`D:\tantan\交付\谭聊-android-release-20260504-upload-deny-ui.apk`
+- 最新 APK SHA256：`AA9408E45A582C0164FACE01902C762F835E7258DD9BE2F29DF573AA21F197F6`
+- 真机验证：已在 `FIN-AL60a` Android 12/API 31 上安装并启动，包更新时间 `2026-05-04 10:39:11`。
+- IM 连接验证：上一轮真机应用 UID `10210` 已建立 ESTABLISHED TCP 连接到 `154.36.161.73:9326`。
 
 ## 已知协作事项
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
 | 客户端性能优化阶段 1-3 | Codex | 已完成首轮，真机已验证 | `handoffs/2026-05-04-client-performance-stage123-codex-complete.md` |
-| 上传拒绝提示前端处理 | Codex | ✅ 已完成，未登录走登录失效流程，类型/路径/大小走当前页面 Toast | `handoffs/2026-05-04-upload-deny-ui-codex-complete.md` |
+| 上传拒绝提示前端处理 | Codex | ✅ 已完成，已构建并真机安装验证 | `handoffs/2026-05-04-upload-deny-ui-codex-complete.md` |
 | Handshake key 轮换 Phase 1 | 后端 AI | ✅ 完成(2026-05-04 01:05 UTC) | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
 | Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ 真机验证闭环(09:30:44 之后 0 次 OLD-KEY) | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
 | Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
