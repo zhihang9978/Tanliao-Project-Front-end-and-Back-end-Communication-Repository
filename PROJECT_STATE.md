@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 10:39 +08:00
+更新时间：2026-05-04 10:46 +08:00
 
 ## 当前基线
 
@@ -23,15 +23,16 @@
 - 客户端 API 基础地址：`https://api.anjuke.site`
 - 客户端 app context：`/mytio`
 - IM handshake key：已按服务端 Phase 2 交接任务切换到新 key；协作仓库不重复公开明文 key。
-- 最新 APK：`D:\tantan\交付\谭聊-android-release-20260504-upload-deny-ui.apk`
-- 最新 APK SHA256：`AA9408E45A582C0164FACE01902C762F835E7258DD9BE2F29DF573AA21F197F6`
-- 真机验证：已在 `FIN-AL60a` Android 12/API 31 上安装并启动，包更新时间 `2026-05-04 10:39:11`。
+- 最新 APK：`D:\tantan\交付\谭聊-android-release-20260504-avatar-compress.apk`
+- 最新 APK SHA256：`53C2D6F4A1EA41F2B1181AB4298D335FC6408ECB84DE48EB7DE562C3C859572B`
+- 真机验证：已在 `FIN-AL60a` Android 12/API 31 上安装并启动，包更新时间 `2026-05-04 10:46:15`。
 - IM 连接验证：上一轮真机应用 UID `10210` 已建立 ESTABLISHED TCP 连接到 `154.36.161.73:9326`。
 
 ## 已知协作事项
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
+| 头像上传大图等待和大小限制 | Codex | ✅ 已完成，已构建并真机安装验证 | `handoffs/2026-05-04-avatar-upload-compress-codex-complete.md` |
 | 客户端性能优化阶段 1-3 | Codex | 已完成首轮，真机已验证 | `handoffs/2026-05-04-client-performance-stage123-codex-complete.md` |
 | 上传拒绝提示前端处理 | Codex | ✅ 已完成，已构建并真机安装验证 | `handoffs/2026-05-04-upload-deny-ui-codex-complete.md` |
 | Handshake key 轮换 Phase 1 | 后端 AI | ✅ 完成(2026-05-04 01:05 UTC) | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
@@ -48,7 +49,9 @@
 - ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key,**已处理 2026-05-04**(模板加占位符 `_PLACEHOLDER_REPLACE_BEFORE_DEPLOY` 防回退)
 - ✅ Phase 3 已立即执行(2026-05-04 01:50 UTC),旧 key 完全失效
 - ✅ Codex 已处理 P0-06 上传拒绝提示：未登录/登录过期走全局登录失效流程，文件类型/文件名/大小限制走当前页面 Toast
+- ✅ Codex 已处理头像大图上传体验：头像上传前压缩到 720x720 并本地预检 5MB，不再把超大原图传到后端等待失败
 - ⚠️ Codex 注意:Web tioim / tioim-small / mg-page / iOS 若仍用旧 `p2xgse` 会立即握手失败,请同步检查
 - ⚠️ Codex 注意:浏览器 devtools 看 Web tioim 的 sessionId cookie 是否含 `HttpOnly; Secure; SameSite=Lax`(P0-10 nginx 已加)
 - ⚠️ 后端待对齐:上传拒绝当前主要靠中文 `msg`，长期应补稳定 `code/errCode`，例如 `UPLOAD_DENY_ANON/EXT/PATH/SIZE`
+- ⚠️ 后端建议:头像 5MB 限制保持不放宽；如框架支持，可基于 `Content-Length` 或上传配置提前拒绝超大请求
 - ⏳ 如果后端后续调整消息同步 payload、历史消息分页、资源缩略图策略,需要继续通过本仓库对齐
