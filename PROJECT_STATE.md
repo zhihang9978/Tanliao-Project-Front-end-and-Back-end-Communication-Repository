@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 16:15 +08:00
+更新时间：2026-05-04 16:40 +08:00
 
 ## 当前基线
 
@@ -31,6 +31,15 @@
 - 最近验证结论：系统消息列表和系统消息详情页头像均显示“初语”图标；logcat 未发现 `FATAL EXCEPTION`。
 - IM 连接验证：上一轮真机应用 UID `10210` 已建立 ESTABLISHED TCP 连接到 `154.36.161.73:9326`。
 
+## Web 前端状态
+
+- `bs-page/tioims` 用户 Web 端已完成 P0-15 后续空数据 NPE 和 `tio.jpg` 404 修复。
+- 最新 `tioims` 静态产物：`D:\tantan\bs-page\page\tioims`。
+- 最新 `tioims` 文件数：`199`，总大小：`6824998` 字节。
+- 最新 `tioims` 入口 bundle：`app.11b3a9ef.js`，MD5：`E172307E36CE2F3E7018CD30F07CD3CD`。
+- 静态图：`/opt/tantan/runtime/web/img/tio.jpg`，MD5：`2A3E20D93676D09A652BFB23BF75A5E7`。
+- HTTP 验证：`https://web.anjuke.site/tioims/home`、`https://web.anjuke.site/tioims/static/js/app.11b3a9ef.js`、`https://web.anjuke.site/img/tio.jpg` 均返回 200。
+
 ## 已知协作事项
 
 | 事项 | 归属 | 状态 | 说明 |
@@ -46,6 +55,7 @@
 | **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
 | **access-url-role 全 endpoint 对账** | 后端 AI | ✅ 73 条规则部署(2026-05-04 02:42 UTC),default 仍 allow,等监控 24h 切 deny | `handoffs/2026-05-04-access-url-role-full-audit-completed.md` |
 | **NdApi sessionid 越权(P0-15)** | Codex + 后端 AI | ✅ Codex 已启用管理后台 IM 入口、重新构建并部署 mg-page；后端待真实管理员会话点击联调 | Codex 完成记录：`handoffs/2026-05-04-p0-15-im-entry-enabled-codex.md`；部署结果：`docs/p0-15-frontend-dist-deployment-result.md` |
+| **P0-15 后续：tioims 空数据 NPE 和 tio.jpg 404** | Codex | ✅ 已完成，已构建部署并远端校验 | `handoffs/2026-05-04-p0-15-tioims-empty-state-and-tiojpg-codex-complete.md` |
 | **IM 真 bug 第二批 IM-02/15/17** | 后端 AI | ✅ 完成 + 部署(2026-05-04 03:55 UTC,IM-08 校正非 bug,IM-18 Stage 0 不做) | `handoffs/2026-05-04-im-batch-fixes-and-codex-ack.md` §2 |
 | 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
@@ -59,6 +69,7 @@
 - ✅ Codex 已处理 P0-06 上传拒绝提示：未登录/登录过期走全局登录失效流程，文件类型/文件名/大小限制走当前页面 Toast
 - ✅ Codex 已处理头像大图上传体验：头像上传前压缩到 720x720 并本地预检 5MB，不再把超大原图传到后端等待失败
 - ✅ Codex 已处理 P0-15 前端静态产物：admin 顶栏 IM 入口已恢复，`/opt/tantan/runtime/admin/` 已重新部署并校验，旧入口静态扫描 0 命中
+- ✅ Codex 已处理 P0-15 后续 `tioims` 空数据 NPE 和 `tio.jpg` 404：`/opt/tantan/runtime/web/tioims/` 已重新部署并校验，`/img/tio.jpg` 已返回 200，远端 app bundle 无 `console.log`
 - ✅ Codex 已处理系统消息头像空白：客户端本地 asset 路径改为 package asset 完整路径，后端 `avatar` 为空时客户端兜底本地“初语”系统头像
 - ⚠️ 后端待真实管理员会话联调 P0-15：点击 `https://admin.anjuke.site/admin` 顶栏 `IM` 后确认 `SSO-TICKET-ISSUE/EXCHANGE` 闭环，且 `NDAPI-AUTOLOGIN-AUDIT == 0`
 - ⚠️ Codex 注意:Web tioim / tioim-small / mg-page / iOS 若仍用旧 handshake key 会立即握手失败，请同步检查
