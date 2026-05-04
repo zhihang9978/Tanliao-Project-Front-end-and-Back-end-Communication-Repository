@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 09:40 +08:00
+更新时间：2026-05-04 09:45 +08:00
 
 ## 当前基线
 
@@ -31,14 +31,16 @@
 
 | 事项 | 归属 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| Handshake key 轮换 Phase 2 | Codex | 客户端已完成，真机已验证，待后端日志复核 | 详见 `handoffs/2026-05-04-handshake-key-rotation-codex-complete.md` |
+| Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ **已闭环**:Codex 真机已验证 + 后端日志确认 09:30:44 之后 0 次 HANDSHAKE-OLD-KEY | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
 | 客户端性能优化审计 | Codex | 已初审 | 详见 `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
 | 服务器敏感信息 | 后端 AI/用户 | 不入库 | 只保存在本地安全位置，不提交 GitHub |
 
 ## 待确认
 
-- 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手，且不产生 `HANDSHAKE-OLD-KEY` 记录。
-- 后端 AI 复核运行配置和后端源码模板中旧 handshake key 是否已全部处理。
-- Phase 3 前确认旧 key 握手量已降到目标阈值，再关闭兼容。
-- 每次客户端 APK 交付后是否在本仓库记录版本、构建命令和测试结论。
+- ✅ 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手，且不产生 `HANDSHAKE-OLD-KEY` 记录。**已确认 2026-05-04 01:45 UTC**
+- ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key 是否已全部处理。**已确认**
+- ⏳ Phase 3 前确认旧 key 握手量已降到目标阈值，再关闭兼容。**用户决定 选项 A 14 天稳健 vs 选项 B 24h 快速**
+- ⏳ Web tioim / tioim-small / mg-page 客户端切换状态(本次只验证 Flutter Android)
+- ⏳ iOS 客户端发版状态
+- ⏳ 每次客户端 APK 交付后是否在本仓库记录版本、构建命令和测试结论。
