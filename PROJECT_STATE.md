@@ -1,6 +1,6 @@
 # 项目状态看板
 
-更新时间：2026-05-04 10:46 +08:00
+更新时间：2026-05-04 14:30 +08:00
 
 ## 当前基线
 
@@ -37,10 +37,10 @@
 | 上传拒绝提示前端处理 | Codex | ✅ 已完成，已构建并真机安装验证 | `handoffs/2026-05-04-upload-deny-ui-codex-complete.md` |
 | Handshake key 轮换 Phase 1 | 后端 AI | ✅ 完成(2026-05-04 01:05 UTC) | `handoffs/2026-05-04-handshake-key-rotation-backend-confirmed.md` |
 | Handshake key 轮换 Phase 2 | Codex + 后端 AI | ✅ 真机验证闭环(09:30:44 之后 0 次 OLD-KEY) | `handoffs/2026-05-04-handshake-key-rotation-device-verified.md` |
-| Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
+| Handshake key 轮换 Phase 3 | 后端 AI | ✅ **已立即执行**(2026-05-04 01:50 UTC,应用用户要求跳过 14 天观察期):删除 `app.handshake.key.old`,旧 `p2xgse` 完全失效 | `handoffs/2026-05-04-handshake-key-rotation-phase3-completed.md` |
 | **后端批量 P0-06/10/11 + P1-14** | 后端 AI | ✅ 完成 + 部署 + 验证(2026-05-04 02:05 UTC) | `handoffs/2026-05-04-batch-p0-06-10-11-p1-14-completed.md` |
 | **access-url-role 全 endpoint 对账** | 后端 AI | ✅ 73 条规则部署(2026-05-04 02:42 UTC),default 仍 allow,等监控 24h 切 deny | `handoffs/2026-05-04-access-url-role-full-audit-completed.md` |
-| **NdApi sessionid 越权(P0-15)** | Codex ⏳ 启用 IM 按钮 + 联调 | ✅ 服务端就绪 + ✅ dist 部署 + ✅ view cache 已清 + ✅ cookie 加固实证。**最后卡点:管理员 UI 看不到 IM 入口(Header.vue 按钮注释了),Codex 启用按钮 + 重新部署 mg-page + 联调验证全流程** | `handoffs/2026-05-04-p0-15-enable-im-entry-and-verify.md` |
+| **NdApi sessionid 越权(P0-15)** | Codex + 后端 AI | ✅ Codex 已启用管理后台 IM 入口、重新构建并部署 mg-page；后端待真实管理员会话点击联调 | Codex 完成记录：`handoffs/2026-05-04-p0-15-im-entry-enabled-codex.md`；部署结果：`docs/p0-15-frontend-dist-deployment-result.md` |
 | **IM 真 bug 第二批 IM-02/15/17** | 后端 AI | ✅ 完成 + 部署(2026-05-04 03:55 UTC,IM-08 校正非 bug,IM-18 Stage 0 不做) | `handoffs/2026-05-04-im-batch-fixes-and-codex-ack.md` §2 |
 | 客户端性能优化审计 | Codex | 已初审，已落地首轮优化 | `docs/performance-audit.md` |
 | 接口契约记录 | 双方 | 待持续维护 | 所有 API 变更写入 `docs/api-contract-log.md` |
@@ -48,13 +48,15 @@
 
 ## 待确认
 
-- ✅ 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手,**已确认 2026-05-04 01:45 UTC** 0 次 HANDSHAKE-OLD-KEY 在 09:30:44 后
-- ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key,**已处理 2026-05-04**(模板加占位符 `_PLACEHOLDER_REPLACE_BEFORE_DEPLOY` 防回退)
-- ✅ Phase 3 已立即执行(2026-05-04 01:50 UTC),旧 key 完全失效
+- ✅ 后端 AI 使用双 key 兼容期日志确认该真机连接按新 key 完成握手，**已确认 2026-05-04 01:45 UTC** 0 次 HANDSHAKE-OLD-KEY 在 09:30:44 后
+- ✅ 后端 AI 复核运行配置和后端源码模板中旧 handshake key，**已处理 2026-05-04**(模板加占位符 `_PLACEHOLDER_REPLACE_BEFORE_DEPLOY` 防回退)
+- ✅ Phase 3 已立即执行(2026-05-04 01:50 UTC)，旧 key 完全失效
 - ✅ Codex 已处理 P0-06 上传拒绝提示：未登录/登录过期走全局登录失效流程，文件类型/文件名/大小限制走当前页面 Toast
 - ✅ Codex 已处理头像大图上传体验：头像上传前压缩到 720x720 并本地预检 5MB，不再把超大原图传到后端等待失败
-- ⚠️ Codex 注意:Web tioim / tioim-small / mg-page / iOS 若仍用旧 `p2xgse` 会立即握手失败,请同步检查
+- ✅ Codex 已处理 P0-15 前端静态产物：admin 顶栏 IM 入口已恢复，`/opt/tantan/runtime/admin/` 已重新部署并校验，旧入口静态扫描 0 命中
+- ⚠️ 后端待真实管理员会话联调 P0-15：点击 `https://admin.anjuke.site/admin` 顶栏 `IM` 后确认 `SSO-TICKET-ISSUE/EXCHANGE` 闭环，且 `NDAPI-AUTOLOGIN-AUDIT == 0`
+- ⚠️ Codex 注意:Web tioim / tioim-small / mg-page / iOS 若仍用旧 `p2xgse` 会立即握手失败，请同步检查
 - ⚠️ Codex 注意:浏览器 devtools 看 Web tioim 的 sessionId cookie 是否含 `HttpOnly; Secure; SameSite=Lax`(P0-10 nginx 已加)
 - ⚠️ 后端待对齐:上传拒绝当前主要靠中文 `msg`，长期应补稳定 `code/errCode`，例如 `UPLOAD_DENY_ANON/EXT/PATH/SIZE`
 - ⚠️ 后端建议:头像 5MB 限制保持不放宽；如框架支持，可基于 `Content-Length` 或上传配置提前拒绝超大请求
-- ⏳ 如果后端后续调整消息同步 payload、历史消息分页、资源缩略图策略,需要继续通过本仓库对齐
+- ⏳ 如果后端后续调整消息同步 payload、历史消息分页、资源缩略图策略，需要继续通过本仓库对齐
